@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Surprise</title>
+    <style>
+        body {
+            background-color: pink;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: red;
+            font-size: 2.5em;
+            padding: 10px;
+            font-weight: bold;
+        }
+        .container {
+            position: relative;
+            margin-top: 20px;
+            padding: 10px;
+        }
+        .love-letter, .apology {
+            display: none;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            max-width: 90%;
+            margin: 20px auto;
+            font-size: 1.2em;
+            color: #D81B60;
+        }
+        .heart-popup {
+            display: none;
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: red;
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+            font-size: 1.5em;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 80%;
+        }
+        .show {
+            display: block;
+        }
+        button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 10px;
+            width: 90%;
+            max-width: 300px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: darkred;
+            transform: scale(1.1);
+        }
+        .love-images img {
+            width: 90%;
+            max-width: 300px;
+            height: auto;
+            margin: 10px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        @keyframes floatingHearts {
+            0% { transform: translateY(100vh) scale(1); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(0.5); opacity: 0; }
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 1.5em;
+            animation: floatingHearts 5s linear infinite;
+        }
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+        .sparkle {
+            position: absolute;
+            color: yellow;
+            font-size: 1.2em;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Valentine's Day, My Love! 💕🔥</h1>
+    <div class="container">
+        <button onclick="showLetter()">Open My Love Letter 💌</button>
+        <div class="love-letter" id="love-letter">If you wish....I could bring the stars for you🌟
+            But that's not the place where they shine
+            If you wish..I could plant a garden near your bed🌹
+            But that's not where flowers grow
+            If you wish...I could hold the ocean's tide 🌊
+            But its waves don’t calm when you're apart.
+            If you wish..I could make the moon glow bright🎑
+            But it's not where the light will play.
+            Rather I offered my soul to you👻🫵
+            To light up the dark in your way
+            
+            ------------------------------------------------------
+            
+            So I gave you the key of my heart ❤️ 
+            The key I've given you unlocks my soul's inner truth✨
+            A warm place where I store my love for you🫵
+            It's not a door or a lock that must be turned🚪🔓
+            But the trust that holds us together🪢..and the love we've learned🫶
+            With this key...you can come in where only you're home 🏡 
+            It's the space where our hearts sing in a songless tone 🎶🎵
+            Through every storm...through every tear..
+            This key is forever yours 🗝️🫵
+            Happy valentine's day dear 🐽</div>
+
+        <button onclick="showApology()">A Naughty Little Confession ❤️</button>
+        <div class="apology" id="apology">I know I can be a little too obsessed with myself sometimes, but you… you are the only obsession I truly need. Let me make it up to you with endless kisses and stolen touches. 😘🔥</div>
+
+        <button onclick="showPopup()">A Special Surprise for You 💖</button>
+        <div class="heart-popup" id="heart-popup">You are my greatest love greatest temptation, my wildest lovely dream, and the only one I want to wake up next to every morning. 🔥💋</div>
+    </div>
+
+    <div class="love-images">
+        <img src="moment.jpg" alt="Lovely moment">
+        <img src="IMG-20250201-WA0025.jpg" alt="Romantic memory">
+        <img src="IMG_20250212_010641_163.jpg" alt="Cute couple">
+    </div>
+
+    <script>
+        function showLetter() {
+            document.getElementById('love-letter').classList.toggle('show');
+        }
+        function showApology() {
+            document.getElementById('apology').classList.toggle('show');
+        }
+        function showPopup() {
+            document.getElementById('heart-popup').classList.toggle('show');
+            setTimeout(() => { document.getElementById('heart-popup').classList.remove('show'); }, 5000);
+        }
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.innerHTML = '✨';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.animationDuration = Math.random() * 2 + 1 + 's';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 2000);
+        }
+        setInterval(createHeart, 700);
+        setInterval(createSparkle, 900);
+    </script>
+</body>
+</html>
